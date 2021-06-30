@@ -45,7 +45,7 @@ class timespan:
         """
         passed = now - self.start
         for b in self.breaks:
-            passed -= _middle(timedelta(hours=0), b.total_length, now - b.start) if now - b.start > timedelta(hours=0) else timedelta(hours=0)
+            passed -= _middle(timedelta(hours=0), now - b.start, b.total_length)
 
         percent = passed / self.length * 100
         return _middle(0, percent, 100)
